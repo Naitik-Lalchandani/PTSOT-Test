@@ -82,7 +82,9 @@ const Question = ({ data, selectedValue, onChange }) => {
     <div className="card">
       <h3>Question {data.number}</h3>
       <p style={{ marginBottom: '1rem', fontWeight: '500' }}>{data.questionText}</p>
-      <img src={data.imageSrc} alt={`Question ${data.number}`} className="question-image" />
+      <div className="image-container">
+        <img src={data.imageSrc.replace('./', import.meta.env.BASE_URL)} alt={`Question ${data.number}`} className="question-image" />
+      </div>
       <div className="options-grid">
         {data.options.map((opt, idx) => (
           <label key={idx} className={`radio-option ${selectedValue === opt ? 'selected' : ''}`}>
