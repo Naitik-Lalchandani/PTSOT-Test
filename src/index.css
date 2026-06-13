@@ -46,6 +46,12 @@ h1, h2, h3 {
   margin-bottom: 1rem;
 }
 
+b, strong {
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 0 1px rgba(255,255,255,0.5);
+}
+
 .container {
   max-width: 800px;
   margin: 0 auto;

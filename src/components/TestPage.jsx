@@ -6,73 +6,73 @@ const QUESTION_DATA = [
   {
     number: 1,
     imageSrc: `./questions/1.png`,
-    questionText: <>1. Imagine you are standing at the <strong>car</strong> and facing the <strong>traffic light</strong>. Select the correct direction and angle at which the <strong>stop sign</strong> will be.</>,
+    questionText: <>1. Imagine you are standing at the <b>car</b> and facing the <b>traffic light</b>. Select the correct direction and angle at which the <b>stop sign</b> will be.</>,
     options: ['A. 120º', 'B. 300º', 'C. 180º', 'D. 270º']
   },
   {
     number: 2,
     imageSrc: `./questions/2.png`,
-    questionText: <>2. Imagine you are standing at the <strong>cat</strong> and facing the <strong>tree</strong>. Select the correct direction and angle at which the <strong>car</strong> will be.</>,
+    questionText: <>2. Imagine you are standing at the <b>cat</b> and facing the <b>tree</b>. Select the correct direction and angle at which the <b>car</b> will be.</>,
     options: ['A. 90º', 'B. 240º', 'C. 190º', 'D. 270º']
   },
   {
     number: 3,
     imageSrc: `./questions/3.png`,
-    questionText: <>3. Imagine you are standing at the <strong>stop sign</strong> and facing the <strong>cat</strong>. Select the correct direction and angle at which the <strong>house</strong> will be.</>,
+    questionText: <>3. Imagine you are standing at the <b>stop sign</b> and facing the <b>cat</b>. Select the correct direction and angle at which the <b>house</b> will be.</>,
     options: ['A. 180º', 'B. 90º', 'C. 225º', 'D. 45º']
   },
   {
     number: 4,
     imageSrc: `./questions/4.png`,
-    questionText: <>4. Imagine you are standing at the <strong>cat</strong> and facing the <strong>flower</strong>. Select the correct direction and angle at which the <strong>car</strong> will be.</>,
+    questionText: <>4. Imagine you are standing at the <b>cat</b> and facing the <b>flower</b>. Select the correct direction and angle at which the <b>car</b> will be.</>,
     options: ['A. 180º', 'B. 225º', 'C. 270º', 'D. 150º']
   },
   {
     number: 5,
     imageSrc: `./questions/5.png`,
-    questionText: <>5. Imagine you are standing at the <strong>stop sign</strong> and facing the <strong>tree</strong>. Select the correct direction and angle at which the <strong>traffic light</strong> will be.</>,
+    questionText: <>5. Imagine you are standing at the <b>stop sign</b> and facing the <b>tree</b>. Select the correct direction and angle at which the <b>traffic light</b> will be.</>,
     options: ['A. 120º', 'B. 45º', 'C. 300º', 'D. 330º']
   },
   {
     number: 6,
     imageSrc: `./questions/6.png`,
-    questionText: <>6. Imagine you are standing at the <strong>stop sign</strong> and facing the <strong>flower</strong>. Select the correct direction and angle at which the <strong>car</strong> will be.</>,
+    questionText: <>6. Imagine you are standing at the <b>stop sign</b> and facing the <b>flower</b>. Select the correct direction and angle at which the <b>car</b> will be.</>,
     options: ['A. 240º', 'B. 30º', 'C. 180º', 'D. 270º']
   },
   {
     number: 7,
     imageSrc: `./questions/7.png`,
-    questionText: <>7. Imagine you are standing at the <strong>traffic light</strong> and facing the <strong>house</strong>. Select the correct direction and angle at which the <strong>flower</strong> will be.</>,
+    questionText: <>7. Imagine you are standing at the <b>traffic light</b> and facing the <b>house</b>. Select the correct direction and angle at which the <b>flower</b> will be.</>,
     options: ['A. 270º', 'B. 30º', 'C. 330º', 'D. 200º']
   },
   {
     number: 8,
     imageSrc: `./questions/8.png`,
-    questionText: <>8. Imagine you are standing at the <strong>house</strong> and facing the <strong>flower</strong>. Select the correct direction and angle at which the <strong>stop sign</strong> will be.</>,
+    questionText: <>8. Imagine you are standing at the <b>house</b> and facing the <b>flower</b>. Select the correct direction and angle at which the <b>stop sign</b> will be.</>,
     options: ['A. 180º', 'B. 230º', 'C. 350º', 'D. 260º']
   },
   {
     number: 9,
     imageSrc: `./questions/9.png`,
-    questionText: <>9. Imagine you are standing at the <strong>car</strong> and facing the <strong>stop sign</strong>. Select the correct direction and angle at which the <strong>tree</strong> will be.</>,
+    questionText: <>9. Imagine you are standing at the <b>car</b> and facing the <b>stop sign</b>. Select the correct direction and angle at which the <b>tree</b> will be.</>,
     options: ['A. 180º', 'B. 240º', 'C. 270º', 'D. 90º']
   },
   {
     number: 10,
     imageSrc: `./questions/10.png`,
-    questionText: <>10. Imagine you are standing at the <strong>traffic light</strong> and facing the <strong>cat</strong>. Select the correct direction and angle at which the <strong>car</strong> will be.</>,
+    questionText: <>10. Imagine you are standing at the <b>traffic light</b> and facing the <b>cat</b>. Select the correct direction and angle at which the <b>car</b> will be.</>,
     options: ['A. 90º', 'B. 60º', 'C. 300º', 'D. 270º']
   },
   {
     number: 11,
     imageSrc: `./questions/11.png`,
-    questionText: <>11. Imagine you are standing at the <strong>tree</strong> and facing the <strong>flower</strong>. Select the correct direction and angle at which the <strong>house</strong> will be.</>,
+    questionText: <>11. Imagine you are standing at the <b>tree</b> and facing the <b>flower</b>. Select the correct direction and angle at which the <b>house</b> will be.</>,
     options: ['A. 150º', 'B. 90º', 'C. 60º', 'D. 30º']
   },
   {
     number: 12,
     imageSrc: `./questions/12.png`,
-    questionText: <>12. Imagine you are standing at the <strong>cat</strong> and facing the <strong>house</strong>. Select the correct direction and angle at which the <strong>traffic light</strong> will be.</>,
+    questionText: <>12. Imagine you are standing at the <b>cat</b> and facing the <b>house</b>. Select the correct direction and angle at which the <b>traffic light</b> will be.</>,
     options: ['A. 150º', 'B. 180º', 'C. 270º', 'D. 90º']
   }
 ];
