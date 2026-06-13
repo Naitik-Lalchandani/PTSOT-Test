@@ -112,12 +112,7 @@ export default function IntroPage({ onStart }) {
       <ExampleQuestion 
         questionNumber={1}
         imageSrc="./questions/eg.png"
-        questionText="
-For example, in the image below: 
-Imagine you are standing at the cat and facing the house (this is 0°).
-Now measure clockwise to find the stop sign.
-"
-        questionText="Imagine you are standing at the cat and facing the house (this is 0°). Now measure clockwise to find the stop sign."
+        questionText={<>Imagine you are standing at the <strong>cat</strong> and facing the <strong>house</strong> (this is 0°). Now measure clockwise to find the <strong>stop sign</strong>.</>}
         options={['A. 60º', 'B. 300º', 'C. 180º', 'D. 270º']}
         correctOption="A. 60º"
         explanation="Since you are facing the house, the stop sign is to your front-right, making it a 60-degree angle."
@@ -126,7 +121,7 @@ Now measure clockwise to find the stop sign.
       <ExampleQuestion 
         questionNumber={2}
         imageSrc="./questions/eg.png"
-        questionText="Imagine you are standing at the cat and facing the house (this is 0°). Now measure clockwise to find the flower."
+        questionText={<>Imagine you are standing at the <strong>cat</strong> and facing the <strong>house</strong> (this is 0°). Now measure clockwise to find the <strong>flower</strong>.</>}
         options={['A. 60º', 'B. 300º', 'C. 180º', 'D. 270º']}
         correctOption="B. 300º"
         explanation="Facing the house, the flower is to your left. Measuring clockwise, 360 - 60 = 300 degrees."
