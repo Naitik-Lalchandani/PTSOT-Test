@@ -26,12 +26,6 @@ function App() {
     // This is the endpoint URL for the Google Apps Script Web App
     // We will leave it empty for now, the user can replace it.
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwdSC0f6mgAGudO3jph7XDcbKr1jfdM4BzGpQgJjh7PpFNFjjsM-vZlCagFhXAwsNsnpg/exec';
-    
-    if (SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwdSC0f6mgAGudO3jph7XDcbKr1jfdM4BzGpQgJjh7PpFNFjjsM-vZlCagFhXAwsNsnpg/exec') {
-      console.log('Submission mocked. Add your Google Apps Script URL to submit data.');
-      console.log('Data payload:', { user, answers });
-      return;
-    }
 
     try {
       await fetch(SCRIPT_URL, {
