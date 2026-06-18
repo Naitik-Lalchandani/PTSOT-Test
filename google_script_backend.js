@@ -7,7 +7,7 @@ function doPost(e) {
     // Define headers if the sheet is empty
     if (sheet.getLastRow() === 0) {
       sheet.appendRow([
-        "Timestamp", "Name", "Roll No", "Grade", "Section", "Time Taken (s)", 
+        "Timestamp", "Name", "Age", "Gender", "Roll No", "Grade", "Section", "Time Taken (s)", 
         "Tab Switches", "Time Outside Tab (s)",
         "Q1", "Q2", "Q3", "Q4", "Q5", "Q6", 
         "Q7", "Q8", "Q9", "Q10", "Q11", "Q12"
@@ -18,6 +18,8 @@ function doPost(e) {
     var row = [
       data.timestamp || new Date(),
       data.name || "",
+      data.age || "",
+      data.gender || "",
       data.rollNo || "",
       data.grade || "",
       data.section || "",
