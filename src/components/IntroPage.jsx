@@ -135,7 +135,7 @@ export default function IntroPage({ onStart }) {
 
       <ExampleQuestion 
         questionNumber={1}
-        imageSrc="./questions/1.png"
+        imageSrc="./questions/question.png"
         questionText={<>Imagine you are standing at the <b>cat</b> and facing the <b>house</b> (this is 0°). Now measure clockwise to find the <b>stop sign</b>.</>}
         centerLabel="cat"
         topLabel="house"
@@ -145,7 +145,7 @@ export default function IntroPage({ onStart }) {
 
       <ExampleQuestion 
         questionNumber={2}
-        imageSrc="./questions/1.png"
+        imageSrc="./questions/question.png"
         questionText={<>Imagine you are standing at the <b>cat</b> and facing the <b>house</b> (this is 0°). Now measure clockwise to find the <b>flower</b>.</>}
         centerLabel="cat"
         topLabel="house"
