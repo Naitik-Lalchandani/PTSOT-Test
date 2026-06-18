@@ -45,7 +45,6 @@ const ExampleQuestion = ({ questionNumber, imageSrc, questionText, correctAngle,
           <div style={{ marginBottom: '0.5rem', fontWeight: 'bold', color: isCorrect ? 'var(--success-color)' : 'var(--error-color)' }}>
             {isCorrect ? 'Correct!' : 'Incorrect. See the dotted line for the correct direction.'}
           </div>
-          <p>{explanation}</p>
         </div>
       )}
     </div>
