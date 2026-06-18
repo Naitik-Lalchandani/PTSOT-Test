@@ -334,3 +334,15 @@ input[type="text"]:focus {
   color: var(--primary-color);
   min-height: 2.25rem;
 }
+
+.angle-picker-correct-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 50%;
+  background-color: transparent;
+  border-left: 4px dashed var(--success-color);
+  transform-origin: bottom left;
+  z-index: 1;
+}

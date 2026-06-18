@@ -26,6 +26,8 @@ const ExampleQuestion = ({ questionNumber, imageSrc, questionText, correctAngle,
         }}
         centerLabel={centerLabel}
         topLabel={topLabel}
+        correctAngle={correctAngle}
+        showCorrectAngle={showExplanation}
       />
 
       <div style={{ textAlign: 'center', marginTop: '1rem' }}>
@@ -41,9 +43,8 @@ const ExampleQuestion = ({ questionNumber, imageSrc, questionText, correctAngle,
       {showExplanation && (
         <div className={`explanation-box ${isCorrect ? 'success' : 'error'}`}>
           <div style={{ marginBottom: '0.5rem', fontWeight: 'bold', color: isCorrect ? 'var(--success-color)' : 'var(--error-color)' }}>
-            {isCorrect ? 'Correct!' : `Incorrect (You chose ${selectedAngle}º).`}
+            {isCorrect ? 'Correct!' : 'Incorrect. See the dotted line for the correct direction.'}
           </div>
-          <strong>Correct Answer: {correctAngle}º</strong>
           <p>{explanation}</p>
         </div>
       )}
@@ -54,12 +55,16 @@ const ExampleQuestion = ({ questionNumber, imageSrc, questionText, correctAngle,
 export default function IntroPage({ onStart }) {
   const [formData, setFormData] = useState({
     name: '',
+    age: '',
+    gender: '',
     rollNo: '',
     grade: '',
     section: ''
   });
 
   const isFormValid = formData.name.trim() !== '' && 
+                      formData.age.trim() !== '' &&
+                      formData.gender.trim() !== '' &&
                       formData.rollNo.trim() !== '' && 
                       formData.grade.trim() !== '' && 
                       formData.section.trim() !== '';
@@ -98,6 +103,20 @@ export default function IntroPage({ onStart }) {
           <div className="input-group">
             <label>Full Name</label>
             <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+          </div>
+          <div className="input-group">
+            <label>Age</label>
+            <input type="number" name="age" value={formData.age} onChange={handleChange} style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid var(--border-color)', background: 'var(--bg-color)', color: 'var(--text-primary)', fontSize: '1rem' }} required />
+          </div>
+          <div className="input-group">
+            <label>Gender</label>
+            <select name="gender" value={formData.gender} onChange={handleChange} style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid var(--border-color)', background: 'var(--bg-color)', color: 'var(--text-primary)', fontSize: '1rem' }} required>
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+              <option value="Prefer not to say">Prefer not to say</option>
+            </select>
           </div>
           <div className="input-group">
             <label>Roll No.</label>

@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 
-export default function AnglePicker({ value, onChange, centerLabel, topLabel }) {
+export default function AnglePicker({ value, onChange, centerLabel, topLabel, correctAngle, showCorrectAngle }) {
   const containerRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
 
@@ -58,6 +58,14 @@ export default function AnglePicker({ value, onChange, centerLabel, topLabel }) 
         {/* Fixed line pointing to 0 degrees */}
         <div className="angle-picker-zero-line"></div>
         
+        {/* Correct Angle dotted line */}
+        {showCorrectAngle && correctAngle !== undefined && correctAngle !== null && (
+          <div 
+            className="angle-picker-correct-line" 
+            style={{ transform: `translate(-50%, -100%) rotate(${correctAngle}deg)` }}
+          ></div>
+        )}
+
         {/* Draggable line */}
         {value !== null && value !== undefined && (
           <div 
@@ -67,7 +75,7 @@ export default function AnglePicker({ value, onChange, centerLabel, topLabel }) 
         )}
       </div>
       <div className="angle-picker-value-display">
-        {value !== null && value !== undefined ? `${value}º` : 'Drag to select an angle'}
+        {value !== null && value !== undefined ? 'Angle selected' : 'Drag to draw the line'}
       </div>
     </div>
   );
