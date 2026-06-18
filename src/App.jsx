@@ -25,9 +25,9 @@ function App() {
   const submitToGoogleSheets = async (user, answers) => {
     // This is the endpoint URL for the Google Apps Script Web App
     // We will leave it empty for now, the user can replace it.
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwT8LqSQBendZopLwPU36UAuLrkUR1EmLqfD2DCanyfKgAg1flgqoakoJnZ1pOvfPAl/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwdSC0f6mgAGudO3jph7XDcbKr1jfdM4BzGpQgJjh7PpFNFjjsM-vZlCagFhXAwsNsnpg/exec';
     
-    if (SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwT8LqSQBendZopLwPU36UAuLrkUR1EmLqfD2DCanyfKgAg1flgqoakoJnZ1pOvfPAl/execc') {
+    if (SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwdSC0f6mgAGudO3jph7XDcbKr1jfdM4BzGpQgJjh7PpFNFjjsM-vZlCagFhXAwsNsnpg/exec') {
       console.log('Submission mocked. Add your Google Apps Script URL to submit data.');
       console.log('Data payload:', { user, answers });
       return;
