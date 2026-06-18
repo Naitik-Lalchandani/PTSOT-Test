@@ -1,11 +1,14 @@
 import { useState } from 'react';
+import AnglePicker from './AnglePicker';
 
-const ExampleQuestion = ({ questionNumber, imageSrc, questionText, options, correctOption, explanation }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
+const ExampleQuestion = ({ questionNumber, imageSrc, questionText, correctAngle, explanation, centerLabel, topLabel }) => {
+  const [selectedAngle, setSelectedAngle] = useState(null);
   const [showExplanation, setShowExplanation] = useState(false);
 
-  const handleSelect = (option) => {
-    setSelectedOption(option);
+  // We will consider it correct if it is within 10 degrees.
+  const isCorrect = selectedAngle !== null && Math.abs(selectedAngle - correctAngle) <= 10;
+
+  const handleCheck = () => {
     setShowExplanation(true);
   };
 
@@ -15,29 +18,32 @@ const ExampleQuestion = ({ questionNumber, imageSrc, questionText, options, corr
       <p style={{ marginBottom: '1rem', fontWeight: '500' }}>{questionText}</p>
       <img src={imageSrc} alt={`Example ${questionNumber}`} className="question-image" />
       
-      <div className="options-grid">
-        {options.map((opt, idx) => (
-          <label key={idx} className={`radio-option ${selectedOption === opt ? 'selected' : ''}`}>
-            <input 
-              type="radio" 
-              name={`example-${questionNumber}`} 
-              value={opt}
-              onChange={() => handleSelect(opt)}
-              checked={selectedOption === opt}
-              disabled={showExplanation}
-            />
-            <span></span>
-            {opt}
-          </label>
-        ))}
+      <AnglePicker 
+        value={selectedAngle}
+        onChange={(val) => {
+          setSelectedAngle(val);
+          setShowExplanation(false); // Hide explanation if they start moving again
+        }}
+        centerLabel={centerLabel}
+        topLabel={topLabel}
+      />
+
+      <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+        <button 
+          className="btn" 
+          onClick={handleCheck}
+          disabled={selectedAngle === null}
+        >
+          Check Answer
+        </button>
       </div>
 
       {showExplanation && (
-        <div className={`explanation-box ${selectedOption === correctOption ? 'success' : 'error'}`}>
-          <div style={{ marginBottom: '0.5rem', fontWeight: 'bold', color: selectedOption === correctOption ? 'var(--success-color)' : 'var(--error-color)' }}>
-            {selectedOption === correctOption ? 'Correct!' : 'Incorrect.'}
+        <div className={`explanation-box ${isCorrect ? 'success' : 'error'}`}>
+          <div style={{ marginBottom: '0.5rem', fontWeight: 'bold', color: isCorrect ? 'var(--success-color)' : 'var(--error-color)' }}>
+            {isCorrect ? 'Correct!' : `Incorrect (You chose ${selectedAngle}º).`}
           </div>
-          <strong>Correct Answer: {correctOption}</strong>
+          <strong>Correct Answer: {correctAngle}º</strong>
           <p>{explanation}</p>
         </div>
       )}
@@ -82,8 +88,7 @@ export default function IntroPage({ onStart }) {
           <li>This test consists of 12 questions.</li>
           <li>You will have exactly 5 minutes to complete the test.</li>
           <li>For each question, imagine you are standing at the first object facing the second object. You must identify the angle/direction of the third object.</li>
-          <li>The angles are measured in degrees in clockwise direction.</li>
-          <li>Choose the correct angle from the multiple-choice options.</li>
+          <li>Use the circular slider to point the line toward the correct object. 0° is straight ahead.</li>
           <li>The test will automatically submit when the timer runs out.</li>
           <li>DO NOT leave the test page or switch tabs during the test. You will be penalized for any violations.</li>
         </ul>
@@ -113,8 +118,9 @@ export default function IntroPage({ onStart }) {
         questionNumber={1}
         imageSrc="./questions/eg.png"
         questionText={<>Imagine you are standing at the <b>cat</b> and facing the <b>house</b> (this is 0°). Now measure clockwise to find the <b>stop sign</b>.</>}
-        options={['A. 60º', 'B. 300º', 'C. 180º', 'D. 270º']}
-        correctOption="A. 60º"
+        centerLabel="cat"
+        topLabel="house"
+        correctAngle={60}
         explanation="Since you are facing the house, the stop sign is to your front-right, making it a 60-degree angle."
       />
 
@@ -122,8 +128,9 @@ export default function IntroPage({ onStart }) {
         questionNumber={2}
         imageSrc="./questions/eg.png"
         questionText={<>Imagine you are standing at the <b>cat</b> and facing the <b>house</b> (this is 0°). Now measure clockwise to find the <b>flower</b>.</>}
-        options={['A. 60º', 'B. 300º', 'C. 180º', 'D. 270º']}
-        correctOption="B. 300º"
+        centerLabel="cat"
+        topLabel="house"
+        correctAngle={300}
         explanation="Facing the house, the flower is to your left. Measuring clockwise, 360 - 60 = 300 degrees."
       />
 
