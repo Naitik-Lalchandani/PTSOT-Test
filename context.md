@@ -23,3 +23,7 @@
 - **Problem:** The example questions in IntroPage displayed an explanatory text under the Correct/Incorrect label, which the user wanted to remove.
   **Changes:** Removed <p>{explanation}</p> from the ExampleQuestion component rendering in IntroPage.jsx.
   **Why:** The visual dotted line serves as sufficient feedback without needing text-based explanations.
+
+- **Problem:** Security audit revealed multiple vulnerabilities including hardcoded Apps Script URL, lack of payload validation, and exploitable anti-cheat mechanics.
+  **Changes:** Moved SCRIPT_URL to .env, added a shared secret token, enforced strict server-side validation and deduplication in google_script_backend.js, implemented cross-referencing with sessionStorage for timers, and added CSP/anti-dev-tools measures.
+  **Why:** To protect the Google Sheet from spam, prevent manipulation of client-side test metrics, and improve overall repository security hygiene.

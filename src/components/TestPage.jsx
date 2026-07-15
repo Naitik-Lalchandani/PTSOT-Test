@@ -107,16 +107,23 @@ export default function TestPage({ onComplete }) {
   
   const hiddenTimestamp = useRef(null);
 
+  useEffect(() => {
+    sessionStorage.setItem('testStartTime', Date.now().toString());
+  }, []);
+
   const handleComplete = useCallback(() => {
-    // Add time taken metric and anti-cheat metrics
-    const timeTaken = TEST_DURATION_SECONDS - timeLeft;
+    // Cross-reference actual time taken against manipulation of timeLeft state
+    const startTimeStr = sessionStorage.getItem('testStartTime');
+    const startTime = startTimeStr ? parseInt(startTimeStr, 10) : Date.now();
+    const actualTimeTaken = Math.floor((Date.now() - startTime) / 1000);
+
     onComplete({ 
       ...answers, 
-      timeTakenSeconds: timeTaken,
+      timeTakenSeconds: actualTimeTaken,
       tabSwitches: tabSwitches,
       timeOutsideTabSeconds: timeOutsideTab
     });
-  }, [answers, onComplete, timeLeft, tabSwitches, timeOutsideTab]);
+  }, [answers, onComplete, tabSwitches, timeOutsideTab]);
 
   useEffect(() => {
     if (timeLeft <= 0) {

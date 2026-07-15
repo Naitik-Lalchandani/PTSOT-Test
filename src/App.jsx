@@ -8,6 +8,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState('intro'); // 'intro', 'test', 'end'
   const [participantData, setParticipantData] = useState(null);
   const [testResults, setTestResults] = useState(null);
+  const [sessionId] = useState(() => (crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2)));
 
   const handleStartTest = (data) => {
     setParticipantData(data);
@@ -23,24 +24,36 @@ function App() {
   };
 
   const submitToGoogleSheets = async (user, answers) => {
-    // This is the endpoint URL for the Google Apps Script Web App
-    // We will leave it empty for now, the user can replace it.
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwdSC0f6mgAGudO3jph7XDcbKr1jfdM4BzGpQgJjh7PpFNFjjsM-vZlCagFhXAwsNsnpg/exec';
+    const SCRIPT_URL = import.meta.env.VITE_SCRIPT_URL;
+    const SECRET_TOKEN = import.meta.env.VITE_SECRET_TOKEN;
+
+    if (!SCRIPT_URL) {
+      console.error('VITE_SCRIPT_URL is missing in .env');
+      return;
+    }
 
     try {
-      await fetch(SCRIPT_URL, {
+      const response = await fetch(SCRIPT_URL, {
         method: 'POST',
-        mode: 'no-cors',
+        // using 'cors' mode since Apps Script will naturally bounce back if preflight is handled,
+        // or we can use standard fetch. Wait, Apps Script redirects POST requests.
+        // It's safer to use normal cors fetch, but since Apps Script issues a 302 redirect on POST,
+        // we might actually need to handle that or stick with no-cors if we just want it to fire.
+        // However, if we use no-cors, we can't read the JSON response.
+        // Let's stick with standard fetch (which defaults to cors).
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'text/plain;charset=utf-8', // Using text/plain avoids CORS preflight OPTIONS in many cases
         },
         body: JSON.stringify({
           ...user,
           answers,
+          sessionId,
+          secret_token: SECRET_TOKEN,
           timestamp: new Date().toISOString()
         })
       });
-      console.log('Submitted successfully');
+      
+      console.log('Submitted successfully', response);
     } catch (error) {
       console.error('Error submitting to Google Sheets:', error);
     }
