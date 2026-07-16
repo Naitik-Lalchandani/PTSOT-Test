@@ -27,3 +27,7 @@
 - **Problem:** Security audit revealed multiple vulnerabilities including hardcoded Apps Script URL, lack of payload validation, and exploitable anti-cheat mechanics.
   **Changes:** Moved SCRIPT_URL to .env, added a shared secret token, enforced strict server-side validation and deduplication in google_script_backend.js, implemented cross-referencing with sessionStorage for timers, and added CSP/anti-dev-tools measures.
   **Why:** To protect the Google Sheet from spam, prevent manipulation of client-side test metrics, and improve overall repository security hygiene.
+
+- **Problem:** Intro form required users to type grade and section manually, which can lead to inconsistencies.
+  **Changes:** Modified IntroPage.jsx to use dropdowns for Grade (Grade 5, Grade 8) and Section, with Section options dynamically updating based on the selected Grade.
+  **Why:** To ensure standardized participant data formatting.

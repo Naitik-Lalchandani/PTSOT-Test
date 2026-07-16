@@ -69,7 +69,12 @@ export default function IntroPage({ onStart }) {
                       formData.section.trim() !== '';
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name === 'grade') {
+      setFormData({ ...formData, grade: value, section: '' });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = (e) => {
@@ -78,6 +83,9 @@ export default function IntroPage({ onStart }) {
       onStart(formData);
     }
   };
+
+  const grade5Sections = ["BG G5 A11C", "BG G5 A11B", "BR G5 A31A", "BG G5 A11A"];
+  const grade8Sections = ["G8-A11A", "G8-A11B", "G8-A11D", "G8-A11C"];
 
   return (
     <div className="container">
@@ -123,11 +131,19 @@ export default function IntroPage({ onStart }) {
           </div>
           <div className="input-group">
             <label>Standard / Grade</label>
-            <input type="text" name="grade" value={formData.grade} onChange={handleChange} required />
+            <select name="grade" value={formData.grade} onChange={handleChange} style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid var(--border-color)', background: 'var(--bg-color)', color: 'var(--text-primary)', fontSize: '1rem' }} required>
+              <option value="">Select Grade</option>
+              <option value="Grade 5">Grade 5</option>
+              <option value="Grade 8">Grade 8</option>
+            </select>
           </div>
           <div className="input-group">
             <label>Section</label>
-            <input type="text" name="section" value={formData.section} onChange={handleChange} required />
+            <select name="section" value={formData.section} onChange={handleChange} style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid var(--border-color)', background: 'var(--bg-color)', color: 'var(--text-primary)', fontSize: '1rem' }} required disabled={!formData.grade}>
+              <option value="">Select Section</option>
+              {formData.grade === "Grade 5" && grade5Sections.map(s => <option key={s} value={s}>{s}</option>)}
+              {formData.grade === "Grade 8" && grade8Sections.map(s => <option key={s} value={s}>{s}</option>)}
+            </select>
           </div>
         </form>
       </div>
