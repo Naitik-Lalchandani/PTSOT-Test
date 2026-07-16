@@ -35,14 +35,9 @@ function App() {
     try {
       const response = await fetch(SCRIPT_URL, {
         method: 'POST',
-        // using 'cors' mode since Apps Script will naturally bounce back if preflight is handled,
-        // or we can use standard fetch. Wait, Apps Script redirects POST requests.
-        // It's safer to use normal cors fetch, but since Apps Script issues a 302 redirect on POST,
-        // we might actually need to handle that or stick with no-cors if we just want it to fire.
-        // However, if we use no-cors, we can't read the JSON response.
-        // Let's stick with standard fetch (which defaults to cors).
+        mode: 'no-cors',
         headers: {
-          'Content-Type': 'text/plain;charset=utf-8', // Using text/plain avoids CORS preflight OPTIONS in many cases
+          'Content-Type': 'text/plain;charset=utf-8',
         },
         body: JSON.stringify({
           ...user,
