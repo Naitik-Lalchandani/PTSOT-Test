@@ -1,5 +1,3 @@
-const SECRET_TOKEN = "change_me_to_a_random_string"; // MUST MATCH VITE_SECRET_TOKEN in .env
-
 function setCORSHeaders(response) {
   // We can't actually set arbitrary headers easily in ContentService without a web app workaround,
   // but Apps Script will automatically add CORS headers if we just return ContentService.
@@ -28,12 +26,11 @@ function doPost(e) {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   
   try {
-    var data = JSON.parse(e.postData.contents);
-    
-    // 1. Authenticate Token
-    if (data.secret_token !== SECRET_TOKEN) {
-      return ContentService.createTextOutput(JSON.stringify({"result": "error", "error": "Unauthorized"}))
-        .setMimeType(ContentService.MimeType.JSON);
+    var data;
+    if (e.postData && e.postData.contents) {
+      data = JSON.parse(e.postData.contents);
+    } else {
+      data = JSON.parse(e.parameter.data);
     }
     
     // Define headers if the sheet is empty

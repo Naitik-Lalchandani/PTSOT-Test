@@ -25,7 +25,6 @@ function App() {
 
   const submitToGoogleSheets = async (user, answers) => {
     const SCRIPT_URL = import.meta.env.VITE_SCRIPT_URL;
-    const SECRET_TOKEN = import.meta.env.VITE_SECRET_TOKEN;
 
     if (!SCRIPT_URL) {
       console.error('VITE_SCRIPT_URL is missing in .env');
@@ -43,7 +42,6 @@ function App() {
           ...user,
           answers,
           sessionId,
-          secret_token: SECRET_TOKEN,
           timestamp: new Date().toISOString()
         })
       });

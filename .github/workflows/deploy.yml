@@ -41,7 +41,6 @@ jobs:
         run: npm run build
         env:
           VITE_SCRIPT_URL: ${{ secrets.VITE_SCRIPT_URL }}
-          VITE_SECRET_TOKEN: ${{ secrets.VITE_SECRET_TOKEN }}
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
