@@ -31,3 +31,7 @@
 - **Problem:** Intro form required users to type grade and section manually, which can lead to inconsistencies.
   **Changes:** Modified IntroPage.jsx to use dropdowns for Grade (Grade 5, Grade 8) and Section, with Section options dynamically updating based on the selected Grade.
   **Why:** To ensure standardized participant data formatting.
+
+- **Problem:** When transitioning between pages (e.g. Intro to Test), the browser maintained the previous scroll position, causing users to skip questions.
+  **Changes:** Added a useEffect hook in App.jsx to trigger window.scrollTo(0, 0) whenever currentPage changes.
+  **Why:** To ensure each new page starts precisely at the top of the viewport.

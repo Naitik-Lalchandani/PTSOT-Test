@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './index.css';
 import IntroPage from './components/IntroPage';
 import TestPage from './components/TestPage';
@@ -9,6 +9,10 @@ function App() {
   const [participantData, setParticipantData] = useState(null);
   const [testResults, setTestResults] = useState(null);
   const [sessionId] = useState(() => (crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2)));
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
 
   const handleStartTest = (data) => {
     setParticipantData(data);
